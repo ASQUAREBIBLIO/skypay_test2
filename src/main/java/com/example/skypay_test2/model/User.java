@@ -10,9 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name="users")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -26,5 +23,43 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booking> bookings = new ArrayList<>();
 
+    public User(){}
+    public User(Long id, String name, double balance, List<Booking> bookings) {
+        Id = id;
+        this.name = name;
+        this.balance = balance;
+        this.bookings = bookings;
+    }
 
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
 }
