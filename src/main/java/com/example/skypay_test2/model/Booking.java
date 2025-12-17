@@ -1,13 +1,8 @@
 package com.example.skypay_test2.model;
 
-import com.example.skypay_test2.types.BookingStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "bookings")
@@ -29,21 +24,16 @@ public class Booking {
     @Column(nullable = false)
     private LocalDate checkOut;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private BookingStatus status;
-
     @Column(nullable = false)
     private Double totalPrice;
 
     public Booking(){}
-    public Booking(Long id, User user, Room room, LocalDate checkIn, LocalDate checkOut, BookingStatus status, Double totalPrice) {
+    public Booking(Long id, User user, Room room, LocalDate checkIn, LocalDate checkOut, Double totalPrice) {
         Id = id;
         this.user = user;
         this.room = room;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.status = status;
         this.totalPrice = totalPrice;
     }
 
@@ -85,14 +75,6 @@ public class Booking {
 
     public void setCheckOut(LocalDate checkOut) {
         this.checkOut = checkOut;
-    }
-
-    public BookingStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(BookingStatus status) {
-        this.status = status;
     }
 
     public Double getTotalPrice() {
